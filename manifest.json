@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "name": "Embedder",
+  "version": "1.0",
+  "description": "Easily generate embed codes to display your Google Photos and Picasa Web Albums content on your blog or elsewhere.",
+  "icons": {
+    "16": "img/16.png",
+    "32": "img/32.png",
+    "48": "img/48.png",
+    "64": "img/64.png",
+    "92": "img/92.png",
+    "128": "img/128.png",
+    "256": "img/256.png"
+  },
+  "short_name": "Embedder",
+  "permissions": [
+    "identity", "identity.email",
+    "storage",
+    "https://picasaweb.google.com/",
+    "https://accounts.google.com/",
+    "https://*.googleusercontent.com/",
+    "https://www.google-analytics.com/"
+  ],
+  "app": {
+    "background": {
+      "scripts": [
+        "js/background.js"
+      ]
+    }
+  },
+  "oauth2": {
+    // live app client_id
+    // "client_id": "932871251130-r3t6rj3t5um5vhmlqnlqt810047k4one.apps.googleusercontent.com",
+    // development app client_id
+    "client_id": "596884473913-57c4n8bcest5bpr2og64s5b5muepk4nf.apps.googleusercontent.com",
+    "scopes": [
+      "https://picasaweb.google.com/data",
+      "https://www.googleapis.com/auth/plus.login"
+    ]
+  },
+  "minimum_chrome_version": "37"
+}

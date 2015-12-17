@@ -1,0 +1,46 @@
+content.
+  src = "https://lh3.googleusercontent.com/-WN40mE56UsI/VWoTWv6t7JI/AAAAAAAAiy8/TeC4ZIGGIC8/I/aegean-961-meal.jpg"
+  type = "image/jpeg"
+exif$tags.
+  exif$exposure.$t = "0.033333335"
+  exif$flash.$t = "false"
+  exif$focallength.$t = "4.235"
+  exif$fstop.$t = "2.3"
+  exif$imageUniqueID.$t = "0984925a1dad032c0000000000000000"
+  exif$iso.$t = "160"
+  exif$make.$t = "Motorola"
+  exif$model.$t = "XT1095"
+  exif$time.$t = "1430823369000"
+gphoto$height.$t = "1125"
+gphoto$license.
+  $t = "ATTRIBUTION_NON_COMMERCIAL_NO_DERIVATIVES"
+  id = 3
+  name = "Attribution-Noncommercial-No Derivative"
+  url = "http://creativecommons.org/licenses/by-nc-nd/3.0"
+gphoto$size.$t = "459181"
+gphoto$timestamp.$t = "1430794569000"
+gphoto$version.$t = "4"
+gphoto$width.$t = "2000"
+id.$t = "https://picasaweb.google.com/data/entry/api/user/102648573533061379918/albumid/6154739251241456881/photoid/6154753122295999634?alt=json"
+media$group.
+  media$content[0].
+    height = 1125
+    medium = "image"
+    type = "image/jpeg"
+    url = "https://lh3.googleusercontent.com/-WN40mE56UsI/VWoTWv6t7JI/AAAAAAAAiy8/TeC4ZIGGIC8/I/aegean-961-meal.jpg"
+    width = 2000
+  media$credit[0].$t = "Charlie Gorichanaz"
+  media$description.$t = "Lunch is served on Aegean Air, though it seems the box is a little overkill."
+  media$keywords
+  media$thumbnail
+    [0].
+      height = 41
+      url = "https://lh3.googleusercontent.com/-WN40mE56UsI/VWoTWv6t7JI/AAAAAAAAiy8/qbjR8XOufAQ/s72/aegean-961-meal.jpg"
+      width = 72
+    [1]
+    [2]
+  media$title.$t = "aegean-961-meal.jpg"
+published.$t = "2015-05-30T19:45:30.000Z"
+summary.$t = "Lunch is served on Aegean Air, though it seems the box is a little overkill."
+title.$t = "aegean-961-meal.jpg"
+updated.$t = "2015-05-30T19:55:53.856Z"

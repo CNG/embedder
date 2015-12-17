@@ -1,0 +1,218 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" link="albums">Embedder</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a link="albums">Albums</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="col-lg-12">
+    <h1 class="page-header">Settings</h1>
+  </div>
+
+  <form name="settingsform" class="form-horizontal" novalidate>
+
+    <div class="form-group">
+      <div class="col-xs-3 col-xs-offset-3">
+        <input type="submit" class="btn btn-primary btn-lg btn-block" ng-click="save(settings)" value="Save" />
+      </div>
+      <div class="col-xs-3">
+        <input type="button" class="btn btn-warning btn-lg btn-block" ng-click="undo(settingsform)" value="Reset" />
+      </div>
+    </div>
+
+    <h2>Albums display</h2>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Image sort criterion</label>
+      <div class="col-sm-9">
+        <span class="form-inline">Sort album images by</span>
+        <label class="radio-inline"><input type="radio" name="settings.sort_by" ng-model="settings.sort_by" value="dateUpdated">date updated</label>
+        <label class="radio-inline"><input type="radio" name="settings.sort_by" ng-model="settings.sort_by" value="datePublished">date published</label>
+        <label class="radio-inline"><input type="radio" name="settings.sort_by" ng-model="settings.sort_by" value="title">title</label>
+        <label class="radio-inline"><input type="radio" name="settings.sort_by" ng-model="settings.sort_by" value="summary">summary</label>
+        <label class="radio-inline"><input type="radio" name="settings.sort_by" ng-model="settings.sort_by" value="">nothing</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Image sort order</label>
+      <div class="col-sm-9">
+        <span class="form-inline">Show album images in</span>
+        <label class="radio-inline"><input type="radio" name="settings.sort_order" ng-model="settings.sort_order" value="ascending">ascending</label>
+        <label class="radio-inline"><input type="radio" name="settings.sort_order" ng-model="settings.sort_order" value="descending">descending</label>
+        <span class="form-inline">order</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label"></label>
+      <div class="col-sm-9">
+        <input type="hidden" name="settings.last_page" ng-model="settings.last_page" value="" />
+        <label class="checkbox-inline"><input type="checkbox" name="settings.save_state" ng-model="settings.save_state" value="1">Load last viewed page on launch</label>
+      </div>
+    </div>
+
+
+    <h2>Image size</h2>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label"></label>
+      <div class="col-sm-9">
+        <p class="help-block">
+          You can generate up to two sizes of each image for embedding. For example, you could show a small image that links to a larger version.
+        </p>
+        <p class="help-block">
+          Google apparently does not support dimensions larger than 2560 pixels. If cropping is enabled, the maximum size will be 2560x2560. If cropping is disabled and the width and height are blank, the original image will be used, regardless of its dimensions. Further, Google apparently supports a maximum height of 1060 pixels if no width is specified.
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Small image</label>
+      <div class="col-sm-9">
+        <label class="checkbox" style="font-weight:inherit;">
+          Limit thumbnail <strong>width</strong> to
+          <input type="text" name="settings.small_width" ng-model="settings.small_width" style="width:40px;" value="600">
+          pixels and <strong>height</strong> to
+          <input type="text" name="settings.small_height" ng-model="settings.small_height" style="width:40px;">
+          pixels
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" name="settings.small_crop" ng-model="settings.small_crop" value="1" />
+          Crop from center to match specified dimensions
+        </label>
+        <label class="checkbox" style="font-weight:inherit;">
+          Use <strong>scale factor</strong> of
+          <input type="text" name="settings.small_scale" ng-model="settings.small_scale" style="width:40px;" value="1.6">
+          for high density display
+        </label>
+        <p class="help-block">
+          Images look sharper on devices with high density displays if the image is actually larger than the height and width attributes of the image tag. The scale factor allows you to generate such an image while keeping the height and width specifiers the size you would otherwise use.
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Large image</label>
+      <div class="col-sm-9">
+        <label class="checkbox" style="font-weight:inherit;">
+          Limit large image <strong>width</strong> to
+          <input type="text" name="settings.large_width" ng-model="settings.large_width" style="width:40px;">
+          pixels and <strong>height</strong> to
+          <input type="text" name="settings.large_height" ng-model="settings.large_height" style="width:40px;">
+          pixels
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" name="settings.large_crop" ng-model="settings.large_crop" value="1" />
+          Crop from center to match specified dimensions
+        </label>
+        <label class="checkbox" style="font-weight:inherit;">
+          Use <strong>scale factor</strong> of
+          <input type="text" name="settings.large_scale" ng-model="settings.large_scale" style="width:40px;" value="1">
+          for high density display
+        </label>
+      </div>
+    </div>
+
+    <h2>Embed code</h2>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Template</label>
+      <div class="col-sm-9">
+        <textarea class="form-control" rows="4" name="settings.template" ng-model="settings.template" ng-trim="false"><a href="$LARGE_URL"><img src="$SMALL_URL" width="$SMALL_WIDTH" height="$SMALL_HEIGHT" alt="$SAFE_TITLE" title="$SAFE_DESCRIPTION"></a></textarea>
+        <p class="help-block">
+          This is the template used to generate the embed codes for each image. Any of the following variables will be replaced with the appropriate value for the image. Note the ones starting with <code>$SAFE_</code> are escaped for use in HTML attributes.
+        </p>
+        <p class="help-block">
+
+          <strong>Basic information:</strong><br>
+            <code>$TITLE</code>,
+            <code>$SAFE_TITLE</code>,
+            <code>$DESCRIPTION</code>,
+            <code>$SAFE_DESCRIPTION</code>,
+            <code>$CREDIT</code>,
+            <code>$SAFE_CREDIT</code>,
+            <code>$HEIGHT</code>,
+            <code>$WIDTH</code>
+            <br>
+
+          <strong>Dates:</strong><br>
+            <code>$PUBLISHED_ISO8601</code>,
+            <code>$PUBLISHED_YYYY-MM-DD</code>,
+            <code>$UPDATED_ISO8601</code>,
+            <code>$UPDATED_YYYY-MM-DD</code>
+            <br>
+
+          <strong>Image URLs:</strong><br>
+            <!-- <code>$THUMB</code>, -->
+            <code>$SMALL_URL</code>,
+            <code>$SMALL_WIDTH</code>,
+            <code>$SMALL_HEIGHT</code>,
+            <code>$LARGE_URL</code>,
+            <code>$LARGE_WIDTH</code>,
+            <code>$LARGE_HEIGHT</code>,
+            <code>$DOWNLOAD</code>
+            <br>
+
+          <strong>Google images information:</strong><br>
+            <code>$LICENSE</code>,
+            <code>$BYTES</code>,
+            <code>$TIMESTAMP</code>,
+            <code>$VERSION</code>
+            <br>
+
+          <strong>EXIF data:</strong><br>
+            <code>$EXPOSURE</code>,
+            <code>$FLASH</code>,
+            <code>$FOCALLENGTH</code>,
+            <code>$FSTOP</code>,
+            <code>$UNIQUEID</code>,
+            <code>$ISO</code>,
+            <code>$MAKE</code>,
+            <code>$MODEL</code>,
+            <code>$TIME</code>
+            <br>
+
+        </p>
+        <p class="help-block">
+          For example, you could generate HTML code that displays the small image and links to the large image like this:
+        </p>
+        <p class="help-block">
+            <code>&lt;a href=&quot;$LARGE_URL&quot;&gt;&lt;img src=&quot;$SMALL_URL&quot; width=&quot;$SMALL_WIDTH&quot; height=&quot;$SMALL_HEIGHT&quot; alt=&quot;$TITLE_SAFE&quot; title=&quot;$DESCRIPTION_SAFE&quot;&gt;&lt;/a&gt;</code>
+        </p>
+        <p class="help-block">
+          Here is the same thing in Markdown format. Note we are not using the <code>_SAFE</code> versions because Markdown handles escaping:
+        </p>
+        <p class="help-block">
+            <code>[![$TITLE]($SMALL_URL "$DESCRIPTION")]($LARGE_URL)</code>
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-3 col-xs-offset-3">
+        <input type="submit" class="btn btn-primary btn-lg btn-block" ng-click="save(settings)" value="Save" />
+      </div>
+      <div class="col-xs-3">
+        <input type="button" class="btn btn-warning btn-lg btn-block" ng-click="undo(settingsform)" value="Reset" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label"></label>
+      <div class="col-sm-9">
+        <label class="checkbox-inline"><input type="checkbox" name="settings.tracking" ng-model="settings.tracking" value="1">Send anonymous usage data</label>
+      </div>
+    </div>
+
+
+  </form>
+
+</div><!-- .container -->
